@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.valueTextBox = new System.Windows.Forms.TextBox();
-            this.operatorComboBox = new System.Windows.Forms.ComboBox();
-            this.fieldComboBox = new System.Windows.Forms.ComboBox();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.cboOperator = new System.Windows.Forms.ComboBox();
+            this.cboField = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,9 +44,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.valueTextBox);
-            this.groupBox1.Controls.Add(this.operatorComboBox);
-            this.groupBox1.Controls.Add(this.fieldComboBox);
+            this.groupBox1.Controls.Add(this.txtValue);
+            this.groupBox1.Controls.Add(this.cboOperator);
+            this.groupBox1.Controls.Add(this.cboField);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -56,30 +56,30 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // valueTextBox
+            // txtValue
             // 
-            this.valueTextBox.Location = new System.Drawing.Point(301, 65);
-            this.valueTextBox.Name = "valueTextBox";
-            this.valueTextBox.Size = new System.Drawing.Size(158, 20);
-            this.valueTextBox.TabIndex = 5;
+            this.txtValue.Location = new System.Drawing.Point(301, 65);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(158, 20);
+            this.txtValue.TabIndex = 5;
             // 
-            // operatorComboBox
+            // cboOperator
             // 
-            this.operatorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.operatorComboBox.FormattingEnabled = true;
-            this.operatorComboBox.Location = new System.Drawing.Point(187, 65);
-            this.operatorComboBox.Name = "operatorComboBox";
-            this.operatorComboBox.Size = new System.Drawing.Size(84, 21);
-            this.operatorComboBox.TabIndex = 4;
+            this.cboOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOperator.FormattingEnabled = true;
+            this.cboOperator.Location = new System.Drawing.Point(187, 65);
+            this.cboOperator.Name = "cboOperator";
+            this.cboOperator.Size = new System.Drawing.Size(84, 21);
+            this.cboOperator.TabIndex = 4;
             // 
-            // fieldComboBox
+            // cboField
             // 
-            this.fieldComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.fieldComboBox.FormattingEnabled = true;
-            this.fieldComboBox.Location = new System.Drawing.Point(23, 65);
-            this.fieldComboBox.Name = "fieldComboBox";
-            this.fieldComboBox.Size = new System.Drawing.Size(134, 21);
-            this.fieldComboBox.TabIndex = 3;
+            this.cboField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboField.FormattingEnabled = true;
+            this.cboField.Location = new System.Drawing.Point(23, 65);
+            this.cboField.Name = "cboField";
+            this.cboField.Size = new System.Drawing.Size(134, 21);
+            this.cboField.TabIndex = 3;
             // 
             // label3
             // 
@@ -155,7 +155,7 @@
             this.Controls.Add(this.tblCarDataGridView);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSearch";
-            this.Text = "Task A Katarina Cehovski 25/08/2015";
+            this.Text = "Task A Search Katarina Cehovski 21/09/2015";
             this.Load += new System.EventHandler(this.frmSearch_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -167,14 +167,14 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox valueTextBox;
-        private System.Windows.Forms.ComboBox operatorComboBox;
+        private System.Windows.Forms.TextBox txtValue;
+        private System.Windows.Forms.ComboBox cboOperator;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView tblCarDataGridView;
-        private System.Windows.Forms.ComboBox fieldComboBox;
+        private System.Windows.Forms.ComboBox cboField;
     }
 }

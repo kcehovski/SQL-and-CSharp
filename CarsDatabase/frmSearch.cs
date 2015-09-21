@@ -20,32 +20,38 @@ namespace CarsDatabase
 
         private void frmSearch_Load(object sender, EventArgs e)
         {
-            fieldComboBox.Items.Add("Make");
-            fieldComboBox.Items.Add("EngineSize");
-            fieldComboBox.Items.Add("RentalPerDay");
-            fieldComboBox.Items.Add("Available");
-            fieldComboBox.SelectedIndex = 0;
+            //When form frmSearch is loaded combo boxes cboField and cboOperator are going to be populated with data.
 
-            operatorComboBox.Items.Add("=");
-            operatorComboBox.Items.Add("<");
-            operatorComboBox.Items.Add(">");
-            operatorComboBox.Items.Add("<=");
-            operatorComboBox.Items.Add(">=");
-            operatorComboBox.SelectedIndex = 0;
+            cboField.Items.Add("Make");
+            cboField.Items.Add("EngineSize");
+            cboField.Items.Add("RentalPerDay");
+            cboField.Items.Add("Available");
+            cboField.SelectedIndex = 0;
+
+            cboOperator.Items.Add("=");
+            cboOperator.Items.Add("<");
+            cboOperator.Items.Add(">");
+            cboOperator.Items.Add("<=");
+            cboOperator.Items.Add(">=");
+            cboOperator.SelectedIndex = 0;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            //Closes the program.
+
             this.Close();
         }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (valueTextBox.Text != "")
+            //Checking that text box txtValue is not empty, making connection to database and running the query.
+            if (txtValue.Text != "")
             {
                 try
                 {
-                    string sql = String.Format("SELECT VehicleRegNo, Make, EngineSize, DateRegistered, '€' + CAST(RentalPerDay AS varchar) AS RentalPerDay, Available FROM tblCar WHERE {0} {1} @Third", fieldComboBox.SelectedItem, operatorComboBox.SelectedItem);
+
+                    string sql = String.Format("SELECT VehicleRegNo, Make, EngineSize, DateRegistered, '€' + CAST(RentalPerDay AS varchar) AS RentalPerDay, Available FROM tblCar WHERE {0} {1} @Third", cboField.SelectedItem, cboOperator.SelectedItem);
 
                     SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Hire.mdf;Integrated Security=True");
                     connection.Open();
@@ -53,32 +59,41 @@ namespace CarsDatabase
 
 
                     command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@Third", valueTextBox.Text);
+                    command.Parameters.AddWithValue("@Third", txtValue.Text);
 
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 
+                    //Creates new data table and populates DataGridView with those records.
                     DataTable table = new DataTable();
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     dataAdapter.Fill(table);
                     tblCarDataGridView.DataSource = table;
+
+                    //If there is no match message will appear.
 
                     if (tblCarDataGridView.Rows.Count == 0)
                     {
                         MessageBox.Show("There is no match!");
                     }
                 }
+                
+                //If there is a sql error it will show this message.
 
                 catch (SqlException)
                 {
                     MessageBox.Show("Error in your query!");
                 }
 
+                //If there is any other error it will show this message.
+
                 catch (Exception)
                 {
-                    MessageBox.Show("Somthing is wrong, try again");
+                    MessageBox.Show("Something is wrong, try again");
                 }
             }
+
+            //If text box txtValue is empty this message will appear.
 
             else
             {
